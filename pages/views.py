@@ -1,13 +1,15 @@
 from django.shortcuts import render
+from .models import Post
 
 
 def home(request):
-    return render(request, "home.html", {})
+    posts = Post.objects.all()
+    context = {
+        'posts': posts
+    }
+    return render(request, "home.html", context)
 
 
 def about(request):
     return render(request, "about.html", {})
 
-
-def contact(request):
-    return render(request, "contact.html", {})
